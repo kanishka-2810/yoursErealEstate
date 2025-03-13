@@ -4,6 +4,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
+import { Mail, MessageCircle } from "lucide-react";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import {
@@ -147,12 +148,20 @@ const Listing = () => {
             </ul>
 
             {currentUser && listing.userRef !== currentUser._id && !contact && (
-              <button
-                onClick={() => setContact(true)}
-                className="bg-slate-700 text-white mt-5 rounded-lg uppercase hover:opacity-85 p-3"
-              >
-                Contact Landlord
-              </button>
+              <div className="flex gap-2 mt-4">
+                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition">
+                  <MessageCircle size={20} />
+                  Message
+                </button>
+
+                <button
+                  className="flex items-center gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-700 transition"
+                  onClick={() => setContact(true)}
+                >
+                  <Mail size={20} />
+                  Email
+                </button>
+              </div>
             )}
 
             {contact && <Contact listing={listing} />}
